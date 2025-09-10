@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build and run current C++ file",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "현재 열린 C++ 파일을 컴파일"
+    },
+    {
+      "label": "run current C++ file",
+      "type": "shell",
+      "command": "${fileDirname}/${fileBasenameNoExtension}",
+      "dependsOn": "build and run current C++ file",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "run cpp without saving binary",
+      "type": "shell",
+      "command": "sh",
+      "args": [
+        "-c",
+        "g++ -std=c++17 '${file}' -o '${fileDirname}/.temp_exec' && '${fileDirname}/.temp_exec'; rm '${fileDirname}/.temp_exec'"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": [],
+      "detail": "컴파일하고 실행만, 실행파일은 삭제"
+    }
+  ]
+}
