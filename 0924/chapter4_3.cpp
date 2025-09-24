@@ -15,7 +15,7 @@ int main()
     //임의의 문자 생성
     char randomChar = static_cast<char>(startChar + rand() % (endChar - startChar + 1));
 
-    cout << "The random character between " << startChar << "and " << endChar << " is " << randomChar << endl;
+    cout << "The random character between " << startChar << " and " << endChar << " is " << randomChar << endl;
 
     return 0;
 }
